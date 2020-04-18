@@ -1,0 +1,108 @@
+complete": "false",
+        "x": 1010,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "45cb88c0.7671f8",
+        "type": "inject",
+        "z": "2e9e08ee.073eb8",
+        "name": "テスト送信",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "401f0ba1.6c3ef4"
+            ]
+        ]
+    },
+    {
+        "id": "29310cfe.801114",
+        "type": "debug",
+        "z": "2e9e08ee.073eb8",
+        "name": "ジャイロ値をデバッグ",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 500,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6aa03a3a.0c8934",
+        "type": "sensor subscribe",
+        "z": "2e9e08ee.073eb8",
+        "sensor": "gyroscope",
+        "freq": "1000",
+        "name": "",
+        "x": 200,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3e7ec78d.363f18",
+        "type": "inject",
+        "z": "2e9e08ee.073eb8",
+        "name": "停止",
+        "topic": "",
+        "payload": "停止しました",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "a9d34888.a9f8b8"
+            ]
+        ]
+    },
+    {
+        "id": "a9d34888.a9f8b8",
+        "type": "sensor unsubscribe",
+        "z": "2e9e08ee.073eb8",
+        "sensor": "gyroscope",
+        "name": "",
+        "x": 270,
+        "y": 420,
+        "wires": [
+            [
+                "61553fb0.da331"
+            ]
+        ]
+    },
+    {
+        "id": "61553fb0.da331",
+        "type": "debug",
+        "z": "2e9e08ee.073eb8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 430,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "57323cd1.959054",
+        "type": "pushbullet-config",
+        "z": "",
+        "name": ""
+    }
+]
