@@ -1,4 +1,175 @@
-complete": "false",
+[
+    {
+        "id": "2e9e08ee.073eb8",
+        "type": "tab",
+        "label": "冷蔵庫IoTサンプル",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9ff0bfcd.197da",
+        "type": "inject",
+        "z": "2e9e08ee.073eb8",
+        "name": "1秒間間隔で読み込み開始",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "6aa03a3a.0c8934"
+            ]
+        ]
+    },
+    {
+        "id": "ffc0306e.05ee3",
+        "type": "pushbullet",
+        "z": "2e9e08ee.073eb8",
+        "config": "57323cd1.959054",
+        "pushtype": "note",
+        "title": "冷蔵庫IoT",
+        "chan": "",
+        "name": "",
+        "x": 1000,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "50338cb.620b574",
+        "type": "gyroscope",
+        "z": "2e9e08ee.073eb8",
+        "name": "",
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "3aed3381.219f4c",
+                "29310cfe.801114"
+            ]
+        ]
+    },
+    {
+        "id": "3aed3381.219f4c",
+        "type": "switch",
+        "z": "2e9e08ee.073eb8",
+        "name": "",
+        "property": "payload.x",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "lt",
+                "v": "-1",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "401f0ba1.6c3ef4"
+            ],
+            [
+                "83b95c5.f92c6a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "aaa45f2a.e9f2d",
+        "type": "debug",
+        "z": "2e9e08ee.073eb8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1010,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "401f0ba1.6c3ef4",
+        "type": "change",
+        "z": "2e9e08ee.073eb8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "開きました",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 140,
+        "wires": [
+            [
+                "aaa45f2a.e9f2d",
+                "ffc0306e.05ee3"
+            ]
+        ]
+    },
+    {
+        "id": "83b95c5.f92c6a",
+        "type": "change",
+        "z": "2e9e08ee.073eb8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "閉じました",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 220,
+        "wires": [
+            [
+                "122e0eb5.033b71",
+                "ffc0306e.05ee3"
+            ]
+        ]
+    },
+    {
+        "id": "122e0eb5.033b71",
+        "type": "debug",
+        "z": "2e9e08ee.073eb8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
         "x": 1010,
         "y": 240,
         "wires": []
